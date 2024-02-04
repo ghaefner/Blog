@@ -18,7 +18,7 @@ def home():
         render_template: Home page template with posts.
     """
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.paginate(page=page, per_page=5)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template('home.html', posts=posts)
 
 
@@ -225,3 +225,22 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+
+@app.route("/user/<string:username>")
+def user_post(username):
+    """
+    Render the page with all posts from a given user.
+
+    Args:
+        username: name of the specific user.
+
+    Returns:
+        render_template: Page template with posts from given user.
+    """
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template('user_post.html', posts=posts, user=user)
