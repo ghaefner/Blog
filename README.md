@@ -92,6 +92,7 @@ flaskblog:
 └── requirements.txt  
 
 
+
 ## Dependencies
 
 This project requires the following dependencies:
