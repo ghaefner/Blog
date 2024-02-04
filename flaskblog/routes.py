@@ -21,29 +21,31 @@ posts = [
 ]
 
 
-# Decorator route to navigate to sub-page
-@app.route("/") # / <=> main page
+@app.route("/")
 @app.route("/home")
 def home():
     return render_template('home.html', posts=posts)
 
-@app.route("/about") # / <=>  page
+
+@app.route("/about")
 def about():
-    return render_template('about.html', title="About Me")
+    return render_template('about.html', title='About')
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
-        flash(message='Your account has been created! You can now log in.', category='success')
-        
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
-
     return render_template('register.html', title='Register', form=form)
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
