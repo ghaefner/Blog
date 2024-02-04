@@ -11,17 +11,36 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
+    """
+    Render the home page with all posts.
+
+    Returns:
+        render_template: Home page template with posts.
+    """
     posts = Post.query.all()
     return render_template('home.html', posts=posts)
 
 
 @app.route("/about")
 def about():
+    """
+    Render the about page.
+
+    Returns:
+        render_template: About page template.
+    """
     return render_template('about.html', title='About')
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    """
+    Render the registration form and handle user registration.
+
+    Returns:
+        render_template: Registration form template.
+        redirect: Redirects to the login page after successful registration.
+    """
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
@@ -37,6 +56,13 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    """
+    Render the login form and handle user login.
+
+    Returns:
+        render_template: Login form template.
+        redirect: Redirects to the home page after successful login.
+    """
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
@@ -53,11 +79,26 @@ def login():
 
 @app.route("/logout")
 def logout():
+    """
+    Log out the current user and redirect to the home page.
+
+    Returns:
+        redirect: Redirects to the home page after logging out.
+    """
     logout_user()
     return redirect(url_for('home'))
 
 
 def save_picture(form_picture):
+    """
+    Save the profile picture uploaded by the user.
+
+    Args:
+        form_picture: Uploaded picture file.
+
+    Returns:
+        str: Filename of the saved picture.
+    """
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
@@ -74,6 +115,13 @@ def save_picture(form_picture):
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
+    """
+    Render the account page and handle updates to user account information.
+
+    Returns:
+        render_template: Account page template.
+        redirect: Redirects to the account page after successful form submission.
+    """
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -95,6 +143,13 @@ def account():
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post():
+    """
+    Render the form for creating a new post and handle post creation.
+
+    Returns:
+        render_template: New post form template.
+        redirect: Redirects to the home page after successful post creation.
+    """
     form = PostForm()
     if form.validate_on_submit():
         post = Post(title=form.title.data, content=form.content.data, author=current_user)
@@ -108,6 +163,15 @@ def new_post():
 
 @app.route("/post/<int:post_id>")
 def post(post_id):
+    """
+    Render the post page for a specific post.
+
+    Args:
+        post_id: ID of the post to be displayed.
+
+    Returns:
+        render_template: Post page template.
+    """
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', title=post.title, post=post)
 
@@ -115,6 +179,15 @@ def post(post_id):
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
+    """
+    Render the update page for a specific post.
+
+    Args:
+        post_id: ID of the post to be displayed.
+
+    Returns:
+        render_template: Update post page template.
+    """
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
@@ -135,6 +208,15 @@ def update_post(post_id):
 @app.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id):
+    """
+    Render the delete page for a specific post.
+
+    Args:
+        post_id: ID of the post to be displayed.
+
+    Returns:
+        render_template: Delete post page template.
+    """
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
