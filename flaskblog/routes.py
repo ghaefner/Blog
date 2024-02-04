@@ -85,23 +85,32 @@ def save_picture(form_picture):
 
     return picture_fn
 
+  
 
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
     form = UpdateAccountForm()
     if form.validate_on_submit():
-        if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
-        current_user.username = form.username.data
-        current_user.email = form.email.data
-        db.session.commit()
-        flash('Your account has been updated!', 'success')
+        if form.delete_picture.data:  # Check if delete picture button is clicked
+            if current_user.image_file != 'default.jpg':
+                picture_path = os.path.join(app.root_path, 'static/profile_pics', current_user.image_file)
+                if os.path.exists(picture_path):
+                     os.remove(picture_path)
+                current_user.image_file = 'default.jpg'
+                db.session.commit()
+                flash('Your profile picture has been deleted!', 'success')
+        else:  # Process regular form submission for updating username, email, and picture
+            if form.picture.data:  # Check if a new picture is uploaded
+                picture_file = save_picture(form.picture.data)
+                current_user.image_file = picture_file
+            current_user.username = form.username.data
+            current_user.email = form.email.data
+            db.session.commit()
+            flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
-    return render_template('account.html', title='Account',
-                           image_file=image_file, form=form)
+    return render_template('account.html', title='Account', image_file=image_file, form=form)
