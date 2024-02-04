@@ -83,3 +83,6 @@ Pipfile
 
 # venv
 .venv
+
+# Static
+flaskblog/static/profile_pics/*
