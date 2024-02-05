@@ -5,3 +5,5 @@ sqlalchemy
 flask-sqlalchemy
 flask-bcrypt
 flask-login
+flask-mail
+itsdangerous==2.0.1
