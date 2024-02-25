@@ -30,4 +30,10 @@ def about():
 
 @main.route("/newsletter")
 def newsletter():
+    """
+    Render the newsletter page.
+
+    Returns:
+        render_template: Newsletter page template.
+    """
     return render_template('newsletter.html', title="Newsletter")
