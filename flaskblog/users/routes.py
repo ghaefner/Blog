@@ -2,7 +2,7 @@ import os
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from flaskblog import db, bcrypt
-from flaskblog.models import User, Post
+from flaskblog.models import User, Post, NewsletterSubscriber
 from flaskblog.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                                    RequestResetForm, ResetPasswordForm, NewsletterEmailForm)
 from flaskblog.users.utils import save_picture, send_reset_email
@@ -176,7 +176,7 @@ def reset_token(token):
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
-@users.route("/newsletter")
+@users.route("/newsletter",  methods=['GET', 'POST'])
 def newsletter():
     """
     Render the newsletter page and handle newsletter subscription.
