@@ -179,10 +179,22 @@ def reset_token(token):
 @users.route("/newsletter")
 def newsletter():
     """
-    Render the newsletter page.
+    Render the newsletter page and handle newsletter subscription.
 
     Returns:
         render_template: Newsletter page template.
+        redirect: Redirect to the newsletter page after subscription.
     """
     form = NewsletterEmailForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        subscriber = NewsletterSubscriber.query.filter_by(email=email).first()
+        if subscriber:
+            flash('You are already subscribed to our newsletter!', 'info')
+        else:
+            new_subscriber = NewsletterSubscriber(email=email)
+            db.session.add(new_subscriber)
+            db.session.commit()
+            flash('Thank you for subscribing to our newsletter!', 'success')
+        return redirect(url_for('users.newsletter'))
     return render_template('newsletter.html', title="Newsletter", form=form)
