@@ -98,12 +98,14 @@ flaskblog:
 This project requires the following dependencies:
 
 - Flask
-- Flask-Login
-- Flask-WTF
-- Flask-SQLAlchemy
-- Flask-Bcrypt
-- Pillow (for image processing)
-- WTForms
+- flask-wtf
+- email_validator
+- sqlalchemy
+- flask-sqlalchemy
+- flask-bcrypt
+- flask-login
+- flask-mail
+- pillow
 
 These dependencies are listed in the `requirements.txt` file and can be installed using `pip`.
 
