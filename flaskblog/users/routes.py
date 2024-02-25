@@ -4,7 +4,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from flaskblog import db, bcrypt
 from flaskblog.models import User, Post
 from flaskblog.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                                   RequestResetForm, ResetPasswordForm)
+                                   RequestResetForm, ResetPasswordForm, NewsletterEmailForm)
 from flaskblog.users.utils import save_picture, send_reset_email
 
 
@@ -175,3 +175,14 @@ def reset_token(token):
         flash('Your password has been updated! You are now able to log in', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+@users.route("/newsletter")
+def newsletter():
+    """
+    Render the newsletter page.
+
+    Returns:
+        render_template: Newsletter page template.
+    """
+    form = NewsletterEmailForm()
+    return render_template('newsletter.html', title="Newsletter", form=form)
