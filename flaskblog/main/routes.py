@@ -26,3 +26,8 @@ def about():
         render_template: About page template.
     """
     return render_template('about.html', title='About')
+
+
+@main.route("/newsletter")
+def newsletter():
+    return render_template('newsletter.html', title="Newsletter")
