@@ -1,9 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div style="text-align: center;">
-        <img src="{{ url_for('static', filename='IMG_3059.JPG') }}" alt="Your Picture" style="width: 200px; height: auto; border-radius: 50%;">
-        <h1 style="margin-top: 20px;">About Me</h1>
-        <p style="font-size: 18px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget libero vel massa tristique scelerisque. Donec eget fermentum mauris. Aliquam euismod mi in eros cursus, non accumsan massa venenatis. Integer vestibulum, odio vel posuere eleifend, mauris velit dictum lorem, in pulvinar neque velit eget dolor.</p>
-        <p style="font-size: 18px;">Nullam consequat nisi quis nisi iaculis, vel vestibulum lorem tristique. Curabitur mattis, ligula ac posuere consequat, metus ipsum vehicula nunc, id luctus libero justo eget eros. Suspendisse non felis sed augue malesuada condimentum. Integer accumsan, libero nec aliquet elementum, quam urna sollicitudin purus, sit amet placerat mauris est sed nisi.</p>
+    <div style="display: flex; justify-content: space-between;">
+        <div style="width: 60%;">
+            <h1>About Me</h1>
+            <p style="font-size: 18px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget libero vel massa tristique scelerisque. Donec eget fermentum mauris. Aliquam euismod mi in eros cursus, non accumsan massa venenatis. Integer vestibulum, odio vel posuere eleifend, mauris velit dictum lorem, in pulvinar neque velit eget dolor.</p>
+            <p style="font-size: 18px;">Nullam consequat nisi quis nisi iaculis, vel vestibulum lorem tristique. Curabitur mattis, ligula ac posuere consequat, metus ipsum vehicula nunc, id luctus libero justo eget eros. Suspendisse non felis sed augue malesuada condimentum. Integer accumsan, libero nec aliquet elementum, quam urna sollicitudin purus, sit amet placerat mauris est sed nisi.</p>
+        </div>
+        <div style="width: 40%; text-align: center;">
+            <img src="{{ url_for('static', filename='AboutMe.png') }}" alt="Your Picture" style="width: 80%; height: auto; border-radius: 50%;">
+        </div>
     </div>
 {% endblock %}
