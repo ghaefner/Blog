@@ -89,7 +89,7 @@ class Post(db.Model):
         return f"Post('{self.title}', '{self.date_posted}')"
 
 
-class NewsletterUser(db.Model):
+class NewsletterSubscriber(db.Model):
     """
     NewsletterUser class - Represents a user subscribed to the newsletter.
 
