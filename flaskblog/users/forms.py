@@ -130,7 +130,12 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField('Reset Password')
 
 class NewsletterEmailForm(FlaskForm):
+    """
+    NewsletterEmailForm class - Form for subscribing to the newsletter.
 
-
+    Attributes:
+        email: StringField for user's email.
+        submit: SubmitField to submit the newsletter subscription form.
+    """
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Subscribe')
