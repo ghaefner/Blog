@@ -6,6 +6,7 @@ This module defines SQLAlchemy models for User and Post, which represent the use
 Classes:
     - User: Represents a user in the application.
     - Post: Represents a blog post in the application.
+    - Subscriber: Represents a subscribed user.
 """
 
 from datetime import datetime
