@@ -25,8 +25,9 @@ pip install -r requirements.txt
 
 4. Run the application:
 
+```{console}
 python run.py
-
+```
 
 5. Open your web browser and go to `http://localhost:5000` to access the application.
 
@@ -94,7 +95,6 @@ flaskblog:
 
 
 ## Dependencies
-
 This project requires the following dependencies:
 
 - Flask
