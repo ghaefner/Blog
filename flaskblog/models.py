@@ -90,6 +90,16 @@ class Post(db.Model):
 
 
 class NewsletterUser(db.Model):
+    """
+    NewsletterUser class - Represents a user subscribed to the newsletter.
+
+    Attributes:
+        id: IntegerField for user's unique ID.
+        email: StringField for user's email address.
+
+    Methods:
+        __repr__: Returns a string representation of the NewsletterUser object.
+    """
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
