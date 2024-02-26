@@ -11,7 +11,6 @@ class PostForm(FlaskForm):
         content: TextAreaField for post content.
         submit: SubmitField to submit the post form.
     """
-
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
