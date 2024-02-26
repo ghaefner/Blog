@@ -1,20 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div style="display: flex; justify-content: space-between;">
-        <div style="width: 60%;">
+    <div class="about-section">
+        <div class="about-left">
             <h1>About Me</h1>
-            <p style="font-size: 18px;">Hello and welcome to my page! I'm a 28-year-old meditation enthusiast with a background in physics and data science. Since 2022, I've been sharing my passion for mindfulness as a meditation and yoga teacher. My journey into mindfulness led me to create Mindful Oasis, a page dedicated to exploring mindfulness and its integration into daily life.</p>
-            <p style="font-size: 18px;">Connect with me on Instagram: <a href="https://www.instagram.com/myndful_oasis/" target="_blank">@myndful_oasis</a></p>
+            <p>Hello and welcome to my page! I'm a 28-year-old meditation enthusiast with a background in physics and data science. Since 2022, I've been sharing my passion for mindfulness as a meditation and yoga teacher. My journey into mindfulness led me to create Mindful Oasis, a page dedicated to exploring mindfulness and its integration into daily life.</p>
+            <p>Connect with me on Instagram: <a href="https://www.instagram.com/myndful_oasis/" target="_blank">@myndful_oasis</a></p>
         </div>
-        <div style="width: 40%; text-align: center;">
-            <img src="{{ url_for('static', filename='profile_pics/AboutMe.png') }}" alt="Your Picture" style="width: 80%; height: auto; border-radius: 50%;">
+        <div class="about-right">
+            <img src="{{ url_for('static', filename='profile_pics/AboutMe.png') }}" alt="Your Picture">
         </div>
     </div>
 
-    <div style="margin-top: 50px;">
+    <div class="mindfulness-section">
         <h2>What is Mindfulness?</h2>
-        <p style="font-size: 18px;">Mindfulness is the practice of bringing one's attention to the present moment, without judgment. It involves being fully aware of your thoughts, feelings, bodily sensations, and surroundings, moment by moment. Mindfulness is often cultivated through meditation practices, such as focused breathing or body scans, but it can also be integrated into everyday activities, such as eating, walking, or even working.</p>
-        <p style="font-size: 18px;">Research has shown that mindfulness can have numerous benefits for mental and physical well-being. It can help reduce stress, anxiety, and depression, improve focus and attention, enhance emotional regulation, and promote overall resilience and happiness.</p>
-        <p style="font-size: 18px;">At Mindful Oasis, we aim to provide resources, guidance, and support for anyone interested in exploring mindfulness and incorporating it into their daily lives. Whether you're new to mindfulness or an experienced practitioner, we welcome you to join us on this journey of self-discovery and inner peace.</p>
+        <p>Mindfulness is the practice of bringing one's attention to the present moment, without judgment. It involves being fully aware of your thoughts, feelings, bodily sensations, and surroundings, moment by moment. Mindfulness is often cultivated through meditation practices, such as focused breathing or body scans, but it can also be integrated into everyday activities, such as eating, walking, or even working.</p>
+        <p>Research has shown that mindfulness can have numerous benefits for mental and physical well-being. It can help reduce stress, anxiety, and depression, improve focus and attention, enhance emotional regulation, and promote overall resilience and happiness.</p>
+        <p>At Mindful Oasis, we aim to provide resources, guidance, and support for anyone interested in exploring mindfulness and incorporating it into their daily lives. Whether you're new to mindfulness or an experienced practitioner, we welcome you to join us on this journey of self-discovery and inner peace.</p>
     </div>
 {% endblock %}
