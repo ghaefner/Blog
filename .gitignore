@@ -86,3 +86,6 @@ Pipfile
 
 # Static
 flaskblog/static/profile_pics/*
+
+# db
+*.db
