@@ -81,8 +81,8 @@ a.article-title:hover {
 
 .profile-pic-container {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   overflow: hidden;
   border-radius: 50%;
 }
