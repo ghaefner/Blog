@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="about-section">
-        <div class="about-left">
+    <div class="about-section" style="display: flex;">
+        <div class="about-left" style="flex: 1;">
             <h1>About Me</h1>
             <p>Hello and welcome to my page! I'm a 28-year-old meditation enthusiast with a background in physics and data science. Since 2022, I've been sharing my passion for mindfulness as a meditation and yoga teacher. My journey into mindfulness led me to create Mindful Oasis, a page dedicated to exploring mindfulness and its integration into daily life.</p>
             <p>Connect with me on Instagram: <a href="https://www.instagram.com/myndful_oasis/" target="_blank">@myndful_oasis</a></p>
         </div>
-        <div class="about-right">
-            <img src="{{ url_for('static', filename='profile_pics/AboutMe.png') }}" alt="Your Picture" style="width: 25%; height: auto;">
+        <div class="about-right" style="flex: 1;">
+            <img src="{{ url_for('static', filename='profile_pics/AboutMe.png') }}" alt="Your Picture" style="width: 100%; height: auto;">
         </div>
     </div>
 
