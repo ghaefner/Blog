@@ -6,8 +6,11 @@
             <p>Hello and welcome to my page! I'm a 28-year-old meditation enthusiast with a background in physics and data science. Since 2022, I've been sharing my passion for mindfulness as a meditation and yoga teacher. My journey into mindfulness led me to create Mindful Oasis, a page dedicated to exploring mindfulness and its integration into daily life.</p>
             <p>Connect with me on Instagram: <a href="https://www.instagram.com/myndful_oasis/" target="_blank">@myndful_oasis</a></p>
         </div>
-        <div class="about-right" style="flex: 1;">
-            <img src="{{ url_for('static', filename='profile_pics/AboutMe.png') }}" alt="Your Picture" style="width: 80%; height: auto;">
+        <div class="about-right" style="flex: 1; position: relative;">
+            <div class="profile-pic-container">
+                <img src="{{ url_for('static', filename='profile_pics/AboutMe.png') }}" alt="Your Picture" style="width: 100%; height: auto;">
+                <div class="profile-pic-mask"></div>
+            </div>
         </div>
     </div>
 
