@@ -26,8 +26,35 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth'
             });
+
+            // Parse events from CSV file and add to calendar
+            fetch('/static/calendar/events.csv')
+                .then(response => response.text())
+                .then(csv => {
+                    const events = parseCsvToEvents(csv);
+                    calendar.addEventSource(events);
+                });
+
             calendar.render();
+
         });
+
+        // Function to parse CSV to events
+        function parseCsvToEvents(csv) {
+            const events = [];
+            const rows = csv.split('\n');
+            for (let i = 1; i < rows.length; i++) {
+                const cols = rows[i].split(';');
+                const date = cols[0].trim();
+                const event = cols[1].trim();
+                events.push({
+                    title: event,
+                    start: date
+                });
+            }
+            return events;
+        }        
+
     </script>
 </head>
 {% endblock %}
