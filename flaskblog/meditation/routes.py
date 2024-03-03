@@ -7,5 +7,5 @@ def videos():
     return render_template('meditation_video.html', title='Meditation Videos')
 
 @meditation.route("/meditation/exercise")
-def excercise():
+def exercise():
     return render_template('mindful_exercise.html', title='Mindfulness Exercise')
