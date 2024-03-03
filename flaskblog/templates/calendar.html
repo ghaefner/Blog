@@ -7,13 +7,27 @@
                 <div class="card-body">
                     <h2 class="card-title">Mindful Calendar</h2>
                     <hr>
-                    <p>Welcome to our mindful calendar! Here, you'll find upcoming events, workshops, and other mindfulness-related activities.</p>
+                    <p class="card-text">Welcome to our mindful calendar! Here, you'll find upcoming events, workshops, and other mindfulness-related activities.</p>
                     <div class="calendar">
-                        <!-- Calendar events will be displayed here -->
+                        <div class="mt-4"></div> <!-- Add space between text and calendar -->
+                        <div id='calendar'></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+            });
+            calendar.render();
+        });
+    </script>
+</head>
 {% endblock %}
