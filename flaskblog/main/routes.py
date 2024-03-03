@@ -1,6 +1,6 @@
 from flask import render_template, request, Blueprint
 from flaskblog.models import Post
-from calendar import TextCalendar
+from calendar import TextCalendar, MONDAY
 
 main = Blueprint('main', __name__)
 
@@ -39,6 +39,6 @@ def calendar():
     year = 2024
     month = 2
 
-    cal = TextCalendar(calendar.SUNDAY)
+    cal = TextCalendar(MONDAY)
     cal_text = cal.formatmonth(year, month)
     return render_template('calendar.html', calendar_text=cal_text)
