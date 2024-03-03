@@ -89,3 +89,6 @@ flaskblog/static/profile_pics/*
 
 # db
 *.db
+
+# Calendar
+flaskblog/static/calendar
