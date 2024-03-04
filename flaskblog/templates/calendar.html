@@ -36,6 +36,19 @@
 
             // Add the event to the calendar
             calendar.addEvent(event);    
+
+            // Event mouse enter to display full event name
+            calendar.setOption('eventMouseover', function(info) {
+                var tooltip = new Tooltip(info.el, {
+                    title: info.event.title,
+                    placement: 'top',
+                    trigger: 'hover',
+                    container: 'body'
+                });
+            });
+            
+
+
             calendar.render();
 
         });    
