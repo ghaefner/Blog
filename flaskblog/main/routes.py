@@ -36,9 +36,4 @@ def calendar():
     Returns:
         render_template: Calendar page template.
     """
-    year = 2024
-    month = 2
-
-    cal = TextCalendar(MONDAY)
-    cal_text = cal.formatmonth(year, month)
-    return render_template('calendar.html', calendar_text=cal_text)
+    return render_template('calendar.html')
