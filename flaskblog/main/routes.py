@@ -1,6 +1,6 @@
 from flask import render_template, request, Blueprint
 from flaskblog.models import Post
-from calendar import TextCalendar, MONDAY
+import json
 
 main = Blueprint('main', __name__)
 
@@ -36,4 +36,13 @@ def calendar():
     Returns:
         render_template: Calendar page template.
     """
-    return render_template('calendar.html')
+    event_lst = [
+        {
+            'title': 'Seminar Mindfulness',
+            'start': '2024-03-06T10:00:00',
+            'end': '2024-03-06T11:30:00'
+        }
+    ]
+    event_lst_json = json.dumps(event_lst)
+
+    return render_template('calendar.html', event_lst=event_lst_json)

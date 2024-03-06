@@ -27,30 +27,15 @@
                 initialView: 'dayGridMonth'
             });
 
-            // Hardcoded event
-            var event = {
-                title: 'Seminar Mindfulness',
-                start: '2024-03-06T10:00:00',
-                end: '2024-03-06T11:30:00'
-            };
+            // Get event list JSON string from Flask and parse it
+            var event_lst = JSON.parse('{{ event_lst|tojson|safe }}');
 
-            // Add the event to the calendar
-            calendar.addEvent(event);    
-
-            // Event mouseover to display full event name
-            calendar.setOption('eventMouseover', function(info) {
-                var tooltip = new Tooltip(info.el, {
-                    title: info.event.title,
-                    placement: 'top',
-                    trigger: 'hover',
-                    container: 'body'
-                });
+            event_lst.forEach(function(event) {
+                calendar.addEvent(event);
             });
 
-
             calendar.render();
-
-        });    
+        });
     </script>
 </head>
 {% endblock %}
