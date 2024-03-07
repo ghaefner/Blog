@@ -17,25 +17,25 @@
         </div>
     </div>
 </div>
-<head>
-    <meta charset='utf-8' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth'
-            });
+{% endblock %}
 
-            // Get event list JSON string from Flask and parse it
-            var event_lst = JSON.parse('{{ event_lst|tojson|safe }}');
-
-            event_lst.forEach(function(event) {
-                calendar.addEvent(event);
-            });
-
-            calendar.render();
+{% block scripts %}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
         });
-    </script>
-</head>
+
+        // Get event list JSON string from Flask and parse it
+        var event_lst = JSON.parse('{{ event_lst_json|tojson|safe }}');
+
+        event_lst.forEach(function(event) {
+            calendar.addEvent(event);
+        });
+
+        calendar.render();
+    });
+</script>
 {% endblock %}
