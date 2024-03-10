@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2>Mindfulness Questionnaire</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>Questions:</legend>
+            <div class="form-group">
+                {{ form.question1.label(class="form-control-label") }}
+                {{ form.question1(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.question2.label(class="form-control-label") }}
+                {{ form.question2(class="form-control") }}
+            </div>
+            <!-- Add more form fields for additional questions -->
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
