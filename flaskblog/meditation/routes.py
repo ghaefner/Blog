@@ -13,7 +13,7 @@ def exercise():
 
 @meditation.route('/meditation/question', methods=['GET', 'POST'])
 def mindful_question():
-    form = MindfulQuestionForm()
+    form = MindfulQuestionForm('flaskblog/static/questions.json')
     if form.validate_on_submit():
         pass
         # Process form data here
