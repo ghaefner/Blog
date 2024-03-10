@@ -10,7 +10,7 @@ def videos():
 def exercise():
     return render_template('mindful_exercise.html', title='Mindfulness Exercise')
 
-@meditation.route('/mindful_question', methods=['GET', 'POST'])
+@meditation.route('/meditation/question', methods=['GET', 'POST'])
 def mindful_question():
     # form = MindfulQuestionForm()
     # if form.validate_on_submit():
